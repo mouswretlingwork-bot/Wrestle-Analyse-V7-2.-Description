@@ -1,14 +1,17 @@
 
+
 name: Build Wrestle Analyse APK
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,7 +29,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          mkdir source
+          mkdir -p source
           unzip -q WrestleAnalyse_Android_Project_V7_0.zip -d source
 
       - name: Build APK
@@ -37,5 +40,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Wrestle-Analyse-V7.0-APK
-          path: 
-path: source/WrestleAnalyseAndroid/app/build/outputs/apk/debug/app-debug.apk
+          path: source/WrestleAnalyseAndroid/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
