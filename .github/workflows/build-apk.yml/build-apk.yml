@@ -1,6 +1,6 @@
 
 
-name: Build Wrestle Analyse APK
+name: Build Wrestle Analyse APK 
 
 on:
   workflow_dispatch:
